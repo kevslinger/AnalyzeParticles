@@ -4,7 +4,8 @@ macro “AnalyzeSlice” {
 	list = getFileList(directory);//An array of all the files inside the directory
 	Array.sort(list);//TODO: figure out if/why sort is actually necessary.
 	for (i = 0; i < list.length; i++) {//Loop through all the files in the directory.
-		if (endsWith(list[i], ".tif") || endsWith(list[i], ".jpg") || endsWith(list[i], ".JPEG”)){/*Make sure the file is an image and not 
+		if (endsWith(list[i], ".tif") || endsWith(list[i], ".jpg") || endsWith(list[i], ".JPEG")){
+			/*Make sure the file is an image and not 
 			some extraneous text file. TODO: Implement more extensions. */
 			open(directory+list[i]);//Open the image.				
 			run("Split Channels");//Run the "Split Channels" command on the image.
@@ -52,7 +53,8 @@ macro “AnalyzeSlice” {
 					m=size;
 				}
 			}
-			run("Analyze Particles...", "size=100-500 display clear summarize");
+			run("Analyze Particles...", "size=100-500 display clear summarize");	
+			close();	
 		}
 	}
 }	
